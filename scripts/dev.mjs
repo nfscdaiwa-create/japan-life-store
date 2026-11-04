@@ -10,7 +10,7 @@ const portArg = args.indexOf('--port');
 const hostArg = args.indexOf('--host');
 const port = Number(portArg >= 0 ? args[portArg+1] : process.env.PORT || 3000);
 const host = hostArg >= 0 ? args[hostArg+1] : '0.0.0.0';
-const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.txt':'text/plain; charset=utf-8','.json':'application/json; charset=utf-8'};
+const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.txt':'text/plain; charset=utf-8','.json':'application/json; charset=utf-8'};
 const security = {
   'X-Robots-Tag':'noindex, nofollow',
   'X-Content-Type-Options':'nosniff',

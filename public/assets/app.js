@@ -5,7 +5,7 @@ const { products, categories, page, adminSections } = JSON.parse(dataElement.tex
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const esc = (v) => String(v).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
-const money = v => new Intl.NumberFormat('zh-CN', { style:'currency', currency:'JPY', maximumFractionDigits:0 }).format(v);
+const money = v => new Intl.NumberFormat('zh-CN', { style:'currency', currency:'JPY', currencyDisplay:'narrowSymbol', maximumFractionDigits:0 }).format(v);
 const symbols = {
   heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>',
   arrow:'<path d="M4 12h15m-5-5 5 5-5 5"/>',
@@ -82,7 +82,7 @@ $$('dialog').forEach(dialog => {
   });
 });
 $$('[data-open-search]').forEach(button => button.addEventListener('click',()=>{
-  renderSearch('');
+  renderSearch($('#global-search').value);
   $('#search-dialog').showModal();
   $('#global-search').focus();
 }));
@@ -95,7 +95,7 @@ function renderSearch(query) {
 
 function card(p) {
   const category = categories.find(c=>c.id===p.category);
-  return `<article class="product-card" data-product-id="${p.id}"><div class="product-visual"><a href="/products/${p.slug}/" class="product-image-link" tabindex="-1" aria-hidden="true"><img src="/assets/${p.image}" alt="" width="640" height="640" loading="lazy"></a><span class="product-tag">${esc(p.tag)}</span><button class="favorite-button icon-button" data-favorite="${p.id}" aria-label="收藏${esc(p.name)}" aria-pressed="false">${icon('heart')}</button><button class="quick-add" data-add="${p.id}" aria-label="将${esc(p.name)}加入示例购物车">${icon('plus')}加入示例购物车</button></div><div class="product-meta"><span>${esc(category.name)}</span><span>选品示意</span></div><h3><a href="/products/${p.slug}/">${esc(p.name)}</a></h3><p class="product-subtitle">${esc(p.subtitle)}</p><p class="product-price"><span>演示价</span> ${money(p.priceMinor)}</p></article>`;
+  return `<article class="product-card" data-product-id="${p.id}"><div class="product-visual"><a href="/products/${p.slug}/" class="product-image-link" tabindex="-1" aria-hidden="true"><img src="/assets/${p.image}" alt="" width="640" height="640" loading="lazy"></a><button class="favorite-button icon-button" data-favorite="${p.id}" aria-label="收藏${esc(p.name)}" aria-pressed="false">${icon('heart')}</button><button class="quick-add" data-add="${p.id}" aria-label="将${esc(p.name)}加入示例购物车">${icon('plus')}加入购物袋</button></div><div class="product-meta"><span>${esc(category.name)}</span><span>选品示意</span></div><h3><a href="/products/${p.slug}/">${esc(p.name)}</a></h3><p class="product-subtitle">${esc(p.subtitle)}</p><p class="product-price"><span>演示价</span> ${money(p.priceMinor)}</p></article>`;
 }
 function renderCatalog() {
   const params = new URLSearchParams(location.search);
@@ -227,7 +227,7 @@ const adminViews = {
   categories: () => `${adminHeading('分类管理','五大商品分类，生活场景作为独立专题')}<div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>分类</th><th>分类标识</th><th>示例数量</th><th>选品方向</th></tr></thead><tbody>${categories.map(c=>`<tr><td>${c.name}</td><td>${c.id}</td><td>${products.filter(p=>p.category===c.id).length}</td><td>${c.subtitle}</td></tr>`).join('')}</tbody></table></div><p class="admin-subtle">示例数量用于确认页面结构，并非真实在售数量。</p>`,
   inventory: () => `${adminHeading('库存管理','按商品规格与 SKU 管理库存，展示可售和预留数量')}${emptyAdmin('真实库存尚未连接','库存字段与约束已预留。接入商品和仓储数据后，再展示可售数量、预留数量与补货提醒；当前不以零库存代替未知状态。')}`,
   orders: () => `${adminHeading('订单管理','订单、支付、发货与售后状态集中查看')}${emptyAdmin('真实订单尚未连接','示例购物车不会创建订单。支付、服务端计价、库存校验与订单处理完成后，才开放购买。','bag')}`,
-  media: () => `${adminHeading('商品素材','当前素材是可替换的选品方向插画')}<div class="media-grid">${products.map(p=>`<figure><img src="/assets/${p.image}" alt="${esc(p.name)}示意图" width="640" height="640"><figcaption>${esc(p.name)} · SVG 示意</figcaption></figure>`).join('')}</div><p class="admin-subtle">真实商品图上传、图片管理和 R2 存储尚未接入。</p>`,
+  media: () => `${adminHeading('商品素材','当前素材是可替换的 AI 选品示意图')}<div class="media-grid">${products.map(p=>`<figure><img src="/assets/${p.image}" alt="${esc(p.name)}示意图" width="640" height="640"><figcaption>${esc(p.name)} · AI 示意</figcaption></figure>`).join('')}</div><p class="admin-subtle">真实商品图上传、图片管理和 R2 存储尚未接入。</p>`,
   shipping: () => `${adminHeading('配送与售后','在开放购买前明确服务地区、费用、时效和退换规则')}<section class="admin-panel"><h2>服务配置</h2><dl class="settings-list"><div><dt>销售与配送地区</dt><dd>待确认</dd></div><div><dt>配送费与税费规则</dt><dd>待确认</dd></div><div><dt>发货及预计到货时间</dt><dd>待确认</dd></div><div><dt>退换货条件</dt><dd>待确认</dd></div><div><dt>客服联系方式</dt><dd>待确认</dd></div></dl></section>`,
   usage: () => `${adminHeading('用量与提醒','免费优先，先把真实用量和通知渠道接通')}<div class="admin-grid"><section class="admin-panel"><h2>账户资源</h2>${usageRows()}</section><section class="admin-panel"><h2>通知配置</h2><dl class="settings-list"><div><dt>账户监控连接</dt><dd>未配置</dd></div><div><dt>提醒接收地址</dt><dd>未配置</dd></div><div><dt>预算邮件</dt><dd>未核实 / 未配置</dd></div><div><dt>提前预警</dt><dd>未启用</dd></div></dl><p>此页面没有实时采集数据。通知能力取决于实际账户、产品与配置；预算邮件有处理延迟，也不等于自动停止服务或封顶费用。</p></section></div>`,
   settings: () => `${adminHeading('店铺设置','将品牌信息和经营配置集中管理')}<section class="admin-panel"><h2>基本信息</h2><dl class="settings-list"><div><dt>当前项目名</dt><dd>日本精品生活馆</dd></div><div><dt>正式品牌名称</dt><dd>待确认</dd></div><div><dt>展示语言</dt><dd>简体中文；预留繁中、日文与英文</dd></div><div><dt>演示币种</dt><dd>JPY 日元；实际结算币种待确认</dd></div><div><dt>店铺状态</dt><dd>筹备预览，暂未开放购买</dd></div><div><dt>管理认证</dt><dd>未接入，管理 API 保持关闭</dd></div><div><dt>营业主体与域名</dt><dd>待确认</dd></div></dl></section>`,
