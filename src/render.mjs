@@ -101,7 +101,7 @@ function product(p) {
   const related = [...products.filter(x => x.id !== p.id && x.category === p.category), ...products.filter(x => x.category !== p.category)].slice(0,4);
   return `<div class="container product-page"><nav class="breadcrumb" aria-label="面包屑"><a href="/">首页</a><span>/</span><a href="/catalog/?category=${p.category}">${category.name}</a><span>/</span><span>${p.name}</span></nav>
     <section class="product-detail" data-detail-id="${p.id}">
-      <div class="detail-gallery"><button class="detail-image" type="button" data-open-image aria-haspopup="dialog" aria-controls="image-dialog" aria-label="查看${p.name}大图"><img src="/assets/${p.image}" alt="${p.name}选品方向示意图" width="1254" height="1254" fetchpriority="high"><span class="image-zoom-hint">${icon('zoom')}查看大图</span></button><div class="detail-image-foot"><span>AI 生成示意 · 非商品实拍</span><span>01 / 01</span></div></div>
+      <div class="detail-gallery"><button class="detail-image" type="button" data-open-image aria-haspopup="dialog" aria-controls="image-dialog" aria-label="查看${p.name}大图"><img src="/assets/${p.image}" alt="${p.name}选品方向示意图" width="1254" height="1254" fetchpriority="high"><span class="image-zoom-hint" aria-hidden="true">${icon('zoom')}<span class="image-zoom-label">查看大图</span></span></button><div class="detail-image-foot"><span>AI 生成示意 · 非商品实拍</span><span>01 / 01</span></div></div>
       <div class="detail-content"><a class="detail-category" href="/catalog/?category=${p.category}"><span aria-hidden="true">${category.glyph}</span>${category.name}${icon('arrow')}</a><h1>${p.name}</h1><p class="detail-subtitle">${p.subtitle}</p><p class="detail-price"><small>演示价</small>${money(p.priceMinor)}<span>JPY 日元</span></p>
         <fieldset id="options" class="variant-options" tabindex="-1"><legend>展示颜色</legend>${p.colors.map((c,i) => `<label><input type="radio" name="variant" value="${c}" ${i === 0 ? 'checked' : ''}><span><i class="color-dot ${c === '深蓝' ? 'color-blue' : c === '浅灰' ? 'color-grey' : 'color-natural'}"></i>${c}${icon('check', 'variant-check')}</span></label>`).join('')}</fieldset>
         <div class="quantity-row"><span>数量<small>每种展示颜色最多 10 件</small></span><div class="quantity-control"><button data-detail-minus aria-label="减少示例数量">${icon('minus')}</button><label class="sr-only" for="detail-qty">示例数量</label><input id="detail-qty" type="number" value="1" min="1" max="10" step="1" inputmode="numeric"><button data-detail-plus aria-label="增加示例数量">${icon('plus')}</button></div></div>
@@ -138,7 +138,7 @@ function adminBody() {
 }
 
 function notFound() {
-  return `<div class="container empty-state not-found"><span class="eyebrow">404</span><h1>这件好物，还没到这里</h1><p>页面可能不存在，回到商品列表继续逛逛吧</p><a class="button button-dark" href="/catalog/">浏览全部商品 ${icon('arrow')}</a></div>`;
+  return `<div class="container empty-state not-found"><span class="eyebrow">404</span><h1><span>这件好物，</span><wbr><span>还没到这里</span></h1><p>页面可能不存在，回到商品列表继续逛逛吧</p><a class="button button-dark" href="/catalog/">浏览全部商品 ${icon('arrow')}</a></div>`;
 }
 
 export function renderPage(kind, item) {

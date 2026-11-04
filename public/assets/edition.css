@@ -213,8 +213,19 @@ button:disabled:hover { background: inherit; }
 .footer-column h2 { font-size: 14px; }
 .footer-column a { font-size: 13px; min-height: 32px; }
 .footer-top > div > p { font-size: 13px; color: var(--muted); margin-top: 16px; }
-.footer-note > p { font-size: 22px; font-weight: 400; }
+.footer-note .eyebrow { font-size: 10px; letter-spacing: .1em; }
+.footer-top .footer-note > p { font-size: 20px; font-weight: 400; line-height: 1.6; margin: 14px 0 6px; }
 .footer-bottom { font-size: 11px; color: var(--muted); padding-block: 18px; }
+
+/* Keep compact admin lists legible without shrinking their data columns. */
+.admin-heading > div { min-width: 0; }
+.admin-heading .button { flex-shrink: 0; white-space: nowrap; }
+.table-product { min-width: 165px; }
+.table-product img { flex-shrink: 0; }
+.admin-table-hint { display: none; }
+@media (max-width: 700px) {
+  .admin-table-hint { display: block; margin: -8px 0 10px; font-size: 11px; color: var(--muted); }
+}
 
 @media (min-width: 1600px) {
   .chapter { flex-basis: 112px; }
@@ -400,8 +411,9 @@ button:disabled:hover { background: inherit; }
 .inline-search > button { height: 44px; width: 44px; }
 .inline-search:focus-within, .search-field:focus-within { outline-color: var(--accent); }
 .sort-control select { border-color: var(--line); border-radius: 0; }
-.filter-chip { background: #f1f1ef; color: var(--ink); min-height: 32px; display: inline-flex; align-items: center; }
+.filter-chip { background: #f1f1ef; color: var(--ink); min-height: 32px; max-width: 100%; min-width: 0; display: inline-flex; align-items: center; }
 .filter-chip[data-remove-filter] { min-height: 40px; gap: 9px; padding: 7px 11px; text-align: left; }
+.filter-chip > span { min-width: 0; overflow-wrap: anywhere; }
 .filter-chip[data-remove-filter]:hover { background: #e5e5e1; }
 .filter-chip[data-remove-filter] .icon { width: 14px; height: 14px; }
 .active-filters > button { font-size: 11px; }
@@ -511,7 +523,7 @@ button:disabled:hover { background: inherit; }
 .guide-grid > aside a { display: flex; align-items: center; gap: 18px; min-height: 52px; padding: 10px 8px; border-bottom: 1px solid var(--line); }
 .guide-grid > aside a:hover { background: #f2f2ef; }
 .guide-grid > aside a > span { font: 10px "SFMono-Regular", Consolas, monospace; color: var(--muted); }
-.guide-sections { max-width: 860px; }
+.guide-sections { max-width: 760px; }
 .guide-sections section { scroll-margin-top: 24px; padding: 22px 0 25px; margin-bottom: 0; border-color: var(--line); }
 .guide-sections section:first-child { border-top: 1px solid var(--ink); }
 .guide-sections section h2 { font-size: 24px; margin: 10px 0 15px; }
@@ -535,6 +547,8 @@ button:disabled:hover { background: inherit; }
 .admin-notice { background: #ededeb; color: var(--ink); border-radius: 0; }
 
 @media (max-width: 1100px) {
+  .image-zoom-hint { top: 12px; right: 12px; bottom: auto; width: 40px; height: 40px; min-height: 0; padding: 0; justify-content: center; }
+  .image-zoom-label { display: none; }
   .catalog-layout { grid-template-columns: 184px minmax(0, 1fr); gap: 25px; }
   .product-detail { gap: 35px; }
   .detail-content h1 { font-size: 29px; }
@@ -588,7 +602,7 @@ button:disabled:hover { background: inherit; }
   .quantity-row .quantity-control button { width: 38px; }
   .quantity-row .quantity-control input { width: 36px; }
   .quantity-row .quantity-control input, .cart-item .quantity-control input { font-size: 16px; }
-  .image-zoom-hint { right: 10px; bottom: 10px; }
+  .image-zoom-hint { top: 10px; right: 10px; bottom: auto; }
   .related-products .section-heading > div { display: block; }
   .related-products .section-heading h2 { font-size: 23px; margin-top: 6px; }
   .cart-layout { grid-template-columns: 1fr; gap: 27px; margin: 20px 0 45px; }
@@ -613,7 +627,7 @@ button:disabled:hover { background: inherit; }
   .about-directory h2 { font-size: 26px; margin-top: 9px; }
   .about-directory nav a { gap: 14px; padding: 20px 3px 15px; }
   .about-directory nav strong { font-size: 32px; }
-  .about-directory nav span { font-size: 10px; }
+  .about-directory nav span { font-size: 12px; }
   .about-status { padding-top: 23px; }
   .about-status p { font-size: 13px; }
   .guide-grid { display: block; margin-top: 0; }
