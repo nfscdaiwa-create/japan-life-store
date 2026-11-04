@@ -1,7 +1,7 @@
 import { normalizeCart, normalizeFavorites, cartTotal, filterProducts, cartItemKey, clampDemoQuantity, MAX_DEMO_QUANTITY, restoreCartItem, createSelectionStore } from './store-core.mjs';
 
 const dataElement = document.getElementById('shop-data');
-const { products, categories, page } = JSON.parse(dataElement.textContent);
+const { products, categories, page, brandName } = JSON.parse(dataElement.textContent);
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const esc = (v) => String(v).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
@@ -237,11 +237,14 @@ function renderCatalog({ syncForm = true } = {}) {
   const sceneName = Object.hasOwn(sceneNames,options.scene) ? sceneNames[options.scene] : '';
   const title = savedView ? '我的收藏' : category?.name || sceneName || '全部选物';
   $('#catalog-title').textContent = title;
-  document.title = `${title} · 日本精品生活馆`;
+  document.title = `${title} · ${brandName}`;
+  $$('meta[property="og:title"], meta[name="twitter:title"]').forEach(meta=>meta.setAttribute('content',document.title));
   const breadcrumb = $('#catalog-breadcrumb');
   if (breadcrumb) breadcrumb.textContent = title;
   const description = $('#catalog-description');
   if (description) description.textContent = savedView ? '在这里查看当前浏览器收藏的物件。' : `按分类、关键词或价格，找到适合日常的${category ? category.name : '物件'}。`;
+  const pageDescription = `${brandName}的${title}。${description?.textContent || '浏览五种日常选物。'}商品与价格为筹备演示，暂未开放购买。`;
+  $$('meta[name="description"], meta[property="og:description"], meta[name="twitter:description"]').forEach(meta=>meta.setAttribute('content',pageDescription));
   $('#result-count').textContent = `${found.length} 件示例商品`;
   grid.innerHTML = found.map(card).join('');
   const empty = $('#catalog-empty');

@@ -17,8 +17,9 @@ export const products = [
 ];
 
 export const shop = {
-  name: '日本精品生活馆',
-  englishName: 'JAPAN LIFE STORE',
+  name: '五物所',
+  englishName: 'WUWUSUO',
+  tagline: '日常选物',
   mode: 'preview',
   currency: 'JPY',
   previewNotice: '筹备预览 · 图片为 AI 生成示意，商品与价格仅作演示',

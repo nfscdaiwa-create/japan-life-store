@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "日本精品生活馆：Cloudflare 电商框架与白色简约界面预览",
+  "description": "五物所 WUWUSUO：器、布、净、茶、行五种日常选物的筹备预览",
   "engines": { "node": ">=24.0.0" },
   "scripts": {
     "build": "node scripts/build.mjs",
