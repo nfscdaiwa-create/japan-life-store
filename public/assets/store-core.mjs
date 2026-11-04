@@ -32,6 +32,12 @@ export function normalizeCart(value, products) {
   }
   return [...items.values()];
 }
+
+/** 撤销只补回被移除的颜色条目，保留当前购物袋的其他改动与每色数量上限。 */
+export function restoreCartItem(current, removed, products) {
+  return normalizeCart([...normalizeCart(current, products), removed], products);
+}
+
 export function normalizeFavorites(value,products) {
   if (!Array.isArray(value)) return [];
   const known = new Set(products.map(p=>p.id));
