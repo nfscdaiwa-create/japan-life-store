@@ -27,6 +27,12 @@ button:disabled:hover { background: inherit; }
 .desktop-nav a { font-size: 14px; line-height: 44px; }
 .desktop-nav a:after { bottom: 4px; height: 2px; }
 .header-actions { gap: 4px; }
+@media (min-width: 901px) {
+  .header-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
+  .header-inner > .brand { justify-self: start; }
+  .desktop-nav { margin-inline: 0; }
+  .header-actions { justify-self: end; }
+}
 .icon-button { border-radius: 0; }
 .icon-button:hover { background: #efefec; }
 .cart-count { background: var(--ink); }
@@ -215,7 +221,8 @@ button:disabled:hover { background: inherit; }
 .footer-top > div > p { font-size: 13px; color: var(--muted); margin-top: 16px; }
 .footer-note .eyebrow { font-size: 10px; letter-spacing: .1em; }
 .footer-top .footer-note > p { font-size: 20px; font-weight: 400; line-height: 1.6; margin: 14px 0 6px; }
-.footer-bottom { font-size: 11px; color: var(--muted); padding-block: 18px; }
+.footer-bottom { font-size: 11px; color: var(--muted); padding-block: 8px; }
+.footer-bottom > a { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; white-space: nowrap; }
 
 /* Keep compact admin lists legible without shrinking their data columns. */
 .admin-heading > div { min-width: 0; }
@@ -357,7 +364,7 @@ button:disabled:hover { background: inherit; }
   .footer-top > div > p { margin-top: 10px; font-size: 12px; }
   .footer-column h2 { font-size: 14px; }
   .footer-column a { min-height: 36px; font-size: 12px; }
-  .footer-bottom { font-size: 10px; gap: 9px; align-items: start; }
+  .footer-bottom { font-size: 11px; gap: 9px; align-items: center; }
   .footer-bottom > span:nth-child(2) { display: none; }
   .search-dialog { width: calc(100% - 28px); padding: 22px 18px; }
   .dialog-heading h2 { font-size: 21px; }
