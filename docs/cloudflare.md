@@ -28,7 +28,7 @@ npx wrangler@4 deploy
 
 `npx` 首次运行会下载 Wrangler 开发工具；它不是网站的运行时依赖。部署使用现有 `wrangler.jsonc`，名称为 `japan-life-store`，静态产物目录为 `dist/`。多账户环境需先确认所选 Cloudflare 账户，不要仅凭同名项目推断账户正确。
 
-当前配置无需 D1／R2 即可展示结构预览。部署成功后，以 Wrangler 实际返回的地址为准，检查首页、商品列表、详情、购物车、后台与 404；`/api/health` 应显示框架状态，商品接口在未绑定数据库时返回 503，管理和结算仍然关闭。
+当前配置无需 D1／R2 即可展示结构预览。部署成功后，以 Wrangler 实际返回的地址为准，检查首页、商品列表、详情、购物袋、后台与 404；`/api/health` 应显示框架状态，商品接口在未绑定数据库时返回 503，管理和结算仍然关闭。
 
 此操作发布的是预览。`noindex` 不等于私有访问；需要限制访问时另行配置真正的访问保护。项目没有新增自动 CI、自动部署或任何自动收费流程。
 
@@ -77,7 +77,7 @@ npx wrangler@4 deploy
 ## 3. 免费优先的配置原则
 
 - 保留静态资源优先，仅让 `/api/*` 先调用 Worker。Cloudflare 官方说明静态资源请求免费；匹配 `run_worker_first` 的请求会执行 Worker，受其额度与计费规则约束。[静态资源费用与限制](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/)
-- 当前示意插画随静态资源发布。R2 留给后续真实商品图片；R2 的免费外发流量不表示存储与读写操作无限免费。[R2 费用说明](https://developers.cloudflare.com/r2/pricing/)
+- 当前 AI 生成示意图片随静态资源发布。R2 留给后续真实商品图片；R2 的免费外发流量不表示存储与读写操作无限免费。[R2 费用说明](https://developers.cloudflare.com/r2/pricing/)
 - D1 通过必要索引与有限分页减少读取；不为每次页面浏览写一条业务记录。实际读写额度按账户计划核对。[D1 费用说明](https://developers.cloudflare.com/d1/platform/pricing/)
 - 不能把免费请求数直接换算成保证可承受的购买人数。浏览、搜索、商品读取、下单以及机器人流量使用的资源不同。
 

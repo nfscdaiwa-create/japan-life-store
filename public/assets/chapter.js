@@ -5,11 +5,11 @@
     if (!rail || rail.dataset.chapterInitialized === 'true') return;
 
     const labels = {
-      kitchen: '餐厨器具',
-      home: '家居日用',
-      care: '美妆个护',
-      food: '食品茶饮',
-      accessories: '服饰配件',
+      kitchen: '餐桌器物',
+      home: '起居织物',
+      care: '日常洗护',
+      food: '茶与食',
+      accessories: '随身好物',
     };
     const chapters = [...rail.querySelectorAll('.chapter[data-chapter]')]
       .map(chapter => {
