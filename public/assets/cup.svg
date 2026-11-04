@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">奶白陶瓷杯与碟示意</title>
+  <desc id="desc">暖白背景上，一只奶白色陶瓷带把杯置于同色圆碟上。选品方向矢量示意。</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f9f8f5"/><stop offset="1" stop-color="#f0eee9"/></linearGradient>
+    <linearGradient id="ceramic" x1="0" x2="1"><stop stop-color="#e6e0d5"/><stop offset=".32" stop-color="#fffdf6"/><stop offset=".72" stop-color="#f8f4e9"/><stop offset="1" stop-color="#d9d1c3"/></linearGradient>
+    <linearGradient id="saucer" x2="0" y2="1"><stop stop-color="#faf8f0"/><stop offset=".6" stop-color="#e8e2d7"/><stop offset="1" stop-color="#d4ccbf"/></linearGradient>
+    <linearGradient id="handle" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9f5eb"/><stop offset="1" stop-color="#d6cdbf"/></linearGradient>
+    <radialGradient id="shade"><stop stop-color="#8e8372" stop-opacity=".22"/><stop offset="1" stop-color="#8e8372" stop-opacity="0"/></radialGradient>
+    <radialGradient id="inside"><stop stop-color="#d1c6b4"/><stop offset=".76" stop-color="#e1d8c8"/><stop offset="1" stop-color="#f2ece0"/></radialGradient>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h640v640H0z"/>
+  <ellipse cx="337" cy="493" rx="216" ry="50" fill="url(#shade)"/>
+  <path d="M151 445c9 48 84 70 174 70s166-22 174-70" fill="url(#saucer)"/>
+  <ellipse cx="325" cy="445" rx="174" ry="57" fill="#f9f6ee"/>
+  <ellipse cx="325" cy="445" rx="150" ry="45" fill="none" stroke="#e0d8cb" stroke-width="2"/>
+  <ellipse cx="325" cy="447" rx="114" ry="31" fill="#d9d0c2" opacity=".65"/>
+  <path d="M409 267c75-14 111 23 100 79-8 44-48 73-99 58l1-29c32 8 56-8 62-34 8-32-7-50-47-45Z" fill="url(#handle)"/>
+  <path d="M433 280c47-4 67 23 57 58-6 26-24 43-51 45" fill="none" stroke="#fffcf3" stroke-width="7" stroke-linecap="round" opacity=".7"/>
+  <path d="M201 252c0 65 8 130 23 171 11 32 45 47 92 47s84-15 94-47c15-41 23-106 23-171Z" fill="url(#ceramic)"/>
+  <path d="M218 282c1 48 6 93 16 128" fill="none" stroke="#fffef9" stroke-width="10" stroke-linecap="round" opacity=".58"/>
+  <path d="M252 449c35 11 86 11 119 0" fill="none" stroke="#c8bead" stroke-width="2" opacity=".45"/>
+  <ellipse cx="317" cy="252" rx="116" ry="41" fill="#fbf7ee" stroke="#ece5d8" stroke-width="2"/>
+  <ellipse cx="317" cy="252" rx="101" ry="29" fill="url(#inside)"/>
+  <path d="M223 250c21-27 149-31 188-3" fill="none" stroke="#bdb19e" stroke-width="2" opacity=".45"/>
+  <path d="M209 253c24 42 184 45 217 1" fill="none" stroke="#fffdf7" stroke-width="4" opacity=".8"/>
+</svg>

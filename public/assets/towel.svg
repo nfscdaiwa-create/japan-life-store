@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">米白与浅灰棉毛巾示意</title>
+  <desc id="desc">暖白背景上，两条折叠整齐的棉毛巾上下叠放。选品方向矢量示意。</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#fbfaf7"/><stop offset="1" stop-color="#f0efea"/></linearGradient>
+    <linearGradient id="ivory" x2="0" y2="1"><stop stop-color="#f8f5eb"/><stop offset="1" stop-color="#e0d9c9"/></linearGradient>
+    <linearGradient id="gray" x2="0" y2="1"><stop stop-color="#d4d5cf"/><stop offset="1" stop-color="#b1b5ae"/></linearGradient>
+    <radialGradient id="shadow"><stop stop-color="#847c69" stop-opacity=".2"/><stop offset="1" stop-color="#847c69" stop-opacity="0"/></radialGradient>
+    <pattern id="cotton" width="7" height="6" patternUnits="userSpaceOnUse"><path d="m1 1 1 1m2 1 1-1m0 3 1 1" fill="none" stroke="#857b68" stroke-width=".7" opacity=".13"/></pattern>
+    <clipPath id="top"><path d="M166 266q-14 7-14 28v55q0 19 21 22l286 13q26 1 29-24v-63q0-22-26-27l-232-33Z"/></clipPath>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h640v640H0z"/>
+  <ellipse cx="327" cy="465" rx="226" ry="44" fill="url(#shadow)"/>
+  <path d="M148 359q-20 6-20 27v45q0 20 24 23l316 14q35 1 37-26v-43q0-23-30-29l-243-35Z" fill="url(#gray)"/>
+  <path d="m148 359 90-28 237 37q30 5 30 22L196 379Z" fill="#e1e2db"/>
+  <path d="M151 389c94 4 195 13 305 15 17 0 26 8 27 22" fill="none" stroke="#90988e" stroke-width="2" opacity=".5"/>
+  <path d="M153 403c95 5 193 12 299 14M153 414c95 5 193 12 299 14M153 425c95 5 193 12 299 14" fill="none" stroke="#f0f0e9" stroke-width="2" opacity=".42"/>
+  <path d="M458 401c12 7 15 21 9 33-4 9-15 11-27 10" fill="none" stroke="#8b9388" stroke-width="2" opacity=".42"/>
+  <path d="M166 266q-14 7-14 28v55q0 19 21 22l286 13q26 1 29-24v-63q0-22-26-27l-232-33Z" fill="url(#ivory)"/>
+  <path d="m166 266 64-29 232 33q26 5 26 22l-269-10Z" fill="#fffdf4"/>
+  <path d="M172 291c84 4 174 10 272 14 16 0 26 10 26 27 0 20-12 28-31 26l-265-11" fill="none" stroke="#cdc2ac" stroke-width="2" opacity=".72"/>
+  <path d="M177 305c84 4 168 9 255 12M177 316c84 4 168 9 255 12M177 327c84 4 168 9 255 12" fill="none" stroke="#fffef7" stroke-width="2" opacity=".7"/>
+  <path d="m199 254 19 26v79M212 250l18 32v78" fill="none" stroke="#d2c7b3" stroke-width="2" opacity=".45"/>
+  <path d="M435 307c15 9 20 24 12 38" fill="none" stroke="#b9ad96" stroke-width="1.5" opacity=".35"/>
+  <path clip-path="url(#top)" fill="url(#cotton)" d="M146 230h348v162H146z"/>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" role="img" aria-labelledby="title desc">
+  <title id="title">日常茶器静物示意</title>
+  <desc id="desc">柔和白色自然光下，奶白茶壶和茶杯置于浅木托盘，旁边有一枝绿叶。家居生活场景矢量示意。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#faf9f5"/><stop offset=".52" stop-color="#f1eee5"/><stop offset="1" stop-color="#e8e3d7"/></linearGradient>
+    <linearGradient id="sun" x1="0" x2="1" y2=".7"><stop stop-color="#fffef9" stop-opacity=".9"/><stop offset="1" stop-color="#fffef9" stop-opacity="0"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e0c8a5"/><stop offset=".4" stop-color="#e8d4b5"/><stop offset="1" stop-color="#bba17c"/></linearGradient>
+    <linearGradient id="ceramic" x1="0" x2="1"><stop stop-color="#ddd4c2"/><stop offset=".27" stop-color="#fffdf3"/><stop offset=".63" stop-color="#f5efdf"/><stop offset="1" stop-color="#d9cfb8"/></linearGradient>
+    <linearGradient id="cup" x1="0" x2="1"><stop stop-color="#e0d6c3"/><stop offset=".28" stop-color="#fffaf0"/><stop offset=".67" stop-color="#f2e9d7"/><stop offset="1" stop-color="#d4c8ad"/></linearGradient>
+    <radialGradient id="shade"><stop stop-color="#6f6149" stop-opacity=".19"/><stop offset="1" stop-color="#6f6149" stop-opacity="0"/></radialGradient>
+    <radialGradient id="tea"><stop stop-color="#b9b18b"/><stop offset=".8" stop-color="#b2a77a"/><stop offset="1" stop-color="#cec4a0"/></radialGradient>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h1200v540H0z"/>
+  <path d="M0 0h700L270 540H0Z" fill="url(#sun)"/>
+  <path d="M0 0h247L0 364Z" fill="#fffefb" opacity=".42"/>
+  <path d="M313 0h26L0 490v-37Z" fill="#fffdf7" opacity=".5"/>
+  <ellipse cx="651" cy="458" rx="418" ry="55" fill="url(#shade)"/>
+  <path d="M275 400q-34 0-41 19l-5 18q-4 22 36 26l614 25q46 1 72-14l48-29q16-14 1-25L874 385Z" fill="#b99c73"/>
+  <path d="M275 390q-36 1-41 20t35 31l611 28q43 0 67-16l43-27q18-13-2-23l-112-33Z" fill="url(#wood)"/>
+  <path d="m285 403 583-20 103 31-75 39-623-26q-29-6 12-24Z" fill="#e9d6b6" stroke="#c6ac83" stroke-width="2"/>
+  <path d="m314 415 563 16m-534-26 570 15m-561 5 483 14" fill="none" stroke="#bfa579" stroke-width="1" opacity=".22"/>
+  <ellipse cx="566" cy="408" rx="175" ry="33" fill="url(#shade)"/>
+  <path d="M651 210c97-24 137 22 117 88-15 53-62 77-108 59l-4-28c34 13 69-6 79-39 14-45-13-68-66-51Z" fill="#d6ccb7"/>
+  <path d="M676 223c68-9 91 25 73 69-10 29-33 48-60 49" fill="none" stroke="#fff9eb" stroke-width="8" opacity=".7" stroke-linecap="round"/>
+  <path d="M464 262c-30-2-57-12-73-35l-39-60-18 11 19 79c9 45 37 68 76 82Z" fill="url(#ceramic)"/>
+  <ellipse cx="343" cy="172" rx="18" ry="8" fill="#c4b697" transform="rotate(-33 343 172)"/>
+  <path d="M493 206c-49 16-87 71-84 130 2 65 49 89 128 92 83 2 135-22 139-89 4-57-23-117-76-133Z" fill="url(#ceramic)"/>
+  <path d="M445 295c-10 45 3 85 23 100" fill="none" stroke="#fffef7" stroke-width="10" opacity=".44" stroke-linecap="round"/>
+  <path d="M479 414c42 12 88 11 128 0" fill="none" stroke="#bcb097" stroke-width="2" opacity=".35"/>
+  <ellipse cx="546" cy="211" rx="84" ry="26" fill="#ded3bc"/>
+  <path d="M464 209c18-31 142-31 164 0-5 23-149 25-164 0Z" fill="#f7f0df"/>
+  <ellipse cx="546" cy="207" rx="80" ry="19" fill="#fff8e9"/>
+  <path d="M527 198c1-11 0-27 19-27s19 17 19 27c0 10-38 10-38 0Z" fill="url(#ceramic)"/>
+  <ellipse cx="546" cy="176" rx="15" ry="5" fill="#faf4e4"/>
+  <ellipse cx="783" cy="424" rx="107" ry="22" fill="url(#shade)"/>
+  <ellipse cx="776" cy="419" rx="92" ry="27" fill="#d9ccb0"/>
+  <ellipse cx="776" cy="414" rx="95" ry="27" fill="#f9f2e1"/>
+  <ellipse cx="776" cy="414" rx="79" ry="19" fill="none" stroke="#dacbad" stroke-width="1.5"/>
+  <path d="M822 325c47-8 64 14 54 40-8 23-32 34-56 24l1-16c17 5 30-2 34-15 6-17-5-25-28-21Z" fill="#e1d3b8"/>
+  <path d="M713 318c2 33 6 64 15 82 7 15 24 22 49 22 26 0 44-7 50-22 8-18 13-49 14-82Z" fill="url(#cup)"/>
+  <ellipse cx="777" cy="318" rx="64" ry="22" fill="#fff8e9"/>
+  <ellipse cx="777" cy="318" rx="55" ry="15" fill="url(#tea)"/>
+  <path d="M726 320c21 15 82 16 103-1" fill="none" stroke="#fffaf0" stroke-width="2"/>
+  <g fill="none" stroke="#8c9270" stroke-linecap="round">
+    <path d="M1135 11c-34 81-106 122-149 197-27 47-37 103-44 163" stroke-width="4"/>
+    <path d="M1042 122c-40-10-67-36-79-65M1013 158c33-3 66-15 96-37M973 232c-37-3-61-18-83-43M959 272c34-9 62-23 81-43" stroke-width="2.5"/>
+  </g>
+  <g fill="#7e8969">
+    <path d="M1054 103c-21-24-19-54-3-68 16 26 18 49 3 68Z"/>
+    <path d="M1090 67c-1-33 13-54 37-55-2 30-15 49-37 55Z"/>
+    <path d="M1081 82c31 7 54-1 65-21-29-9-53-1-65 21Z"/>
+    <path d="M1034 134c-34 1-53-16-55-40 30 2 50 15 55 40Z"/>
+    <path d="M985 193c-24-12-35-36-26-57 25 15 33 34 26 57Z"/>
+    <path d="M1003 175c24 12 50 8 64-13-28-10-47-6-64 13Z"/>
+    <path d="M958 256c-31 2-54-14-58-37 30-1 50 10 58 37Z"/>
+    <path d="M974 251c30 4 51-10 56-33-30 0-47 12-56 33Z"/>
+  </g>
+  <g fill="#a0a88a">
+    <path d="M982 83c-28-3-44-22-42-44 26 7 40 21 42 44Z"/>
+    <path d="M1065 144c20-18 43-21 60-8-19 19-39 21-60 8Z"/>
+    <path d="M920 212c-27-7-40-27-35-47 25 10 38 25 35 47Z"/>
+  </g>
+</svg>

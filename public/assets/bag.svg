@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">天然棉布托特包示意</title>
+  <desc id="desc">米白背景上，一只简洁无品牌文字的天然色棉布托特包。选品方向矢量示意。</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f7f7f3"/><stop offset="1" stop-color="#edeee7"/></linearGradient>
+    <linearGradient id="canvas" x1="0" x2="1"><stop stop-color="#cfc4ad"/><stop offset=".2" stop-color="#eee7d5"/><stop offset=".62" stop-color="#e5dcc6"/><stop offset="1" stop-color="#c6baa0"/></linearGradient>
+    <linearGradient id="strap" x1="0" x2="1"><stop stop-color="#bdb095"/><stop offset=".5" stop-color="#e5dcc7"/><stop offset="1" stop-color="#c5b89c"/></linearGradient>
+    <radialGradient id="shadow"><stop stop-color="#6b6955" stop-opacity=".2"/><stop offset="1" stop-color="#6b6955" stop-opacity="0"/></radialGradient>
+    <pattern id="weave" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 1h5M1 0v5" stroke="#948a70" stroke-width=".45" opacity=".15"/></pattern>
+    <clipPath id="bag"><path d="M188 261c84 16 174 16 261-1l-17 217c-2 22-30 28-108 28s-109-7-112-28Z"/></clipPath>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h640v640H0z"/>
+  <ellipse cx="329" cy="518" rx="184" ry="32" fill="url(#shadow)"/>
+  <path d="M249 274c-9-152 129-154 132 0" fill="none" stroke="#b9ad94" stroke-width="23"/>
+  <path d="M249 274c-9-152 129-154 132 0" fill="none" stroke="#d3c8b1" stroke-width="15"/>
+  <path d="M188 261c84 16 174 16 261-1l-17 217c-2 22-30 28-108 28s-109-7-112-28Z" fill="url(#canvas)"/>
+  <path d="M188 261c84 16 174 16 261-1l-7 30c-82 13-169 13-250-1Z" fill="#d5cbb5"/>
+  <path d="M196 272c79 14 161 13 243-1" stroke="#b5aa90" stroke-width="1.2" fill="none"/>
+  <path d="M201 291c79 12 151 11 235-1" stroke="#fbf3de" stroke-width="1.5" fill="none" opacity=".65"/>
+  <path d="M244 311v-54c-1-123 149-139 149-5v58" fill="none" stroke="#baad92" stroke-width="23"/>
+  <path d="M244 311v-54c-1-123 149-139 149-5v58" fill="none" stroke="url(#strap)" stroke-width="18"/>
+  <path d="M241 307v-48c0-120 148-136 148-8v56" fill="none" stroke="#f2e9d4" stroke-width="1.2" opacity=".65"/>
+  <path d="M236 301h16v28h-16ZM385 300h16v28h-16Z" fill="none" stroke="#aa9d81" stroke-width="1" opacity=".6"/>
+  <path d="m238 303 12 24m0-24-12 24m149-24 12 24m0-24-12 24" stroke="#aa9d81" stroke-width=".9" opacity=".55"/>
+  <path d="M217 311c7 49 11 104 9 161m197-164c-11 62-15 113-10 170" stroke="#ab9d7f" stroke-width="2" fill="none" opacity=".35"/>
+  <path d="M236 463c49 18 112 17 160 1" fill="none" stroke="#c9bca0" stroke-width="1.5" opacity=".6"/>
+  <path d="m221 481 23-33m180 34-25-33" fill="none" stroke="#b4a789" stroke-width="2" opacity=".4"/>
+  <path clip-path="url(#bag)" fill="url(#weave)" d="M180 255h275v258H180z"/>
+</svg>
