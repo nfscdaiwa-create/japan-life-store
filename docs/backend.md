@@ -12,7 +12,7 @@
 | R2 | 未来的正式商品图片 | 预留 `MEDIA` 绑定及图片 `object_key`，未开放上传或公开读取端点 |
 | 交易与管理身份 | 订单创建、支付回调、权限校验 | 保持关闭；不能用请求头或环境开关绕过 |
 
-静态请求通过 `ASSETS.fetch(request)` 交给 Cloudflare 的静态资源服务；配置 `assets.run_worker_first` 仅匹配 `/api/*`，使接口与静态页面分开处理。绑定与调用方式参照 [Cloudflare 静态资源绑定文档](https://developers.cloudflare.com/workers/static-assets/binding/)。
+静态请求通过 `ASSETS.fetch(request)` 交给 Cloudflare 的静态资源服务；配置 `assets.run_worker_first` 匹配 `/api` 与 `/api/*`，使接口与静态页面分开处理。绑定与调用方式参照 [Cloudflare 静态资源绑定文档](https://developers.cloudflare.com/workers/static-assets/binding/)。
 
 ## 2. 绑定约定
 
@@ -26,7 +26,7 @@
 
 ## 3. API 约定
 
-成功：`{"ok":true,"data":{...}}`。失败：`{"ok":false,"error":{"code":"...","message":"中文说明"}}`。所有 Worker API 响应均包含 `Cache-Control: no-store`。无跨域开放配置，前台按同源方式调用。
+成功：`{"ok":true,"data":{...}}`。失败：`{"ok":false,"error":{"code":"...","message":"中文说明"}}`。所有 Worker API 响应均包含 `Cache-Control: no-store` 与 `X-Robots-Tag: noindex, nofollow`。无跨域开放配置，前台按同源方式调用。
 
 | 请求 | 当前行为 |
 | --- | --- |
@@ -35,7 +35,7 @@
 | `GET /api/products/:slug` | 返回一件活跃商品、活跃规格与图片对象引用 |
 | `POST /api/checkout` | 固定返回 503 `CHECKOUT_NOT_CONFIGURED`；不解析请求体、不写订单、不触发支付 |
 | `/api/admin`、`/api/admin/*` | 固定返回 503 `ADMIN_NOT_CONFIGURED`；包括带伪造认证头的请求 |
-| 其他 `/api/*` | 返回 JSON 404，不回退成状态 200 的首页 |
+| `/api` 与其他 `/api/*` | 返回 JSON 404，不回退成状态 200 的首页 |
 
 读取接口支持 `HEAD`。不支持的方法返回 405 和 `Allow`。生产支付回调尚未注册。
 
@@ -48,7 +48,11 @@
 | `limit` | 默认 24，范围 1–48 |
 | `offset` | 默认 0，范围 0–10000 |
 
-目录返回 `products`、`categories` 和 `pagination: {limit, offset, hasMore}`。商品使用 `priceMinor`、`currency`、`currencyMinorUnit` 表示金额。例如 `2500 / JPY / 0` 表示 2,500 日元，不能统一除以 100。`availableQuantity` 为活跃规格的实存量减去预留量。图片返回 `imageKey` 或 `images[].objectKey`，需要后续媒体发布配置生成可访问地址。
+目录返回 `products`、`categories` 和 `pagination: {limit, offset, hasMore}`。商品使用 `priceMinor`、`currency`、`currencyMinorUnit` 表示金额。例如 `2500 / JPY / 0` 表示 2,500 日元，不能统一除以 100。
+
+`availableQuantity` 为活跃规格中**已建库存记录的可售量**（实存量减去预留量）的合计。缺少库存记录的规格按不可售处理：规格返回 `0`，不增加商品可售量。这个 `0` 不代表已经核实实体库存为零；调用方不能据此宣称“已核实零库存”。正式导入时，必须为每个活跃规格完整建立并核对库存记录。
+
+图片返回 `imageKey` 或 `images[].objectKey`，需要后续媒体发布配置生成可访问地址。封面、替代文字及详情图片列表只包含商品级图片和活跃规格图片；草稿及已下架规格关联的图片不公开。
 
 SQL 中的用户输入全部使用 D1 `prepare(...).bind(...)`，没有拼接用户输入进 SQL。用法参照 [D1 预处理语句文档](https://developers.cloudflare.com/d1/worker-api/prepared-statements/)。数据库未迁移、连接失败或配额异常统一返回 503 `CATALOG_UNAVAILABLE`，响应不含 SQL、访问密钥或内部异常内容。
 

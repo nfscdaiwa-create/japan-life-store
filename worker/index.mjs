@@ -7,9 +7,17 @@
 const API_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8',
   'Cache-Control': 'no-store',
+  'X-Robots-Tag': 'noindex, nofollow',
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'no-referrer',
 };
+
+// 商品级图片可以公开；关联规格的图片必须与该规格同时处于公开状态。
+const PUBLIC_IMAGE_CONDITION = `(im.variant_id IS NULL OR EXISTS (
+  SELECT 1 FROM product_variants image_variant
+  WHERE image_variant.id = im.variant_id AND image_variant.product_id = im.product_id
+    AND image_variant.status = 'active'
+))`;
 
 const PRODUCT_SELECT = `
   SELECT p.id, p.slug, p.name, p.description, p.brand,
@@ -20,9 +28,11 @@ const PRODUCT_SELECT = `
     (SELECT MIN(v.price_minor) FROM product_variants v
       WHERE v.product_id = p.id AND v.status = 'active') AS priceMinor,
     (SELECT im.object_key FROM product_images im
-      WHERE im.product_id = p.id ORDER BY im.sort_order, im.id LIMIT 1) AS imageKey,
+      WHERE im.product_id = p.id AND ${PUBLIC_IMAGE_CONDITION}
+      ORDER BY im.sort_order, im.id LIMIT 1) AS imageKey,
     (SELECT im.alt_text FROM product_images im
-      WHERE im.product_id = p.id ORDER BY im.sort_order, im.id LIMIT 1) AS imageAlt,
+      WHERE im.product_id = p.id AND ${PUBLIC_IMAGE_CONDITION}
+      ORDER BY im.sort_order, im.id LIMIT 1) AS imageAlt,
     COALESCE((SELECT SUM(i.on_hand - i.reserved)
       FROM product_variants v JOIN inventory i ON i.variant_id = v.id
       WHERE v.product_id = p.id AND v.status = 'active'), 0) AS availableQuantity
@@ -141,9 +151,10 @@ async function product(request, env, encodedSlug) {
           COALESCE(i.on_hand - i.reserved, 0) AS availableQuantity
         FROM product_variants v LEFT JOIN inventory i ON i.variant_id = v.id
         WHERE v.product_id = ? AND v.status = 'active' ORDER BY v.sort_order, v.id`).bind(row.id).all(),
-      env.DB.prepare(`SELECT id, variant_id AS variantId, object_key AS objectKey,
-          alt_text AS alt, width, height, sort_order AS sortOrder
-        FROM product_images WHERE product_id = ? ORDER BY sort_order, id`).bind(row.id).all(),
+      env.DB.prepare(`SELECT im.id, im.variant_id AS variantId, im.object_key AS objectKey,
+          im.alt_text AS alt, im.width, im.height, im.sort_order AS sortOrder
+        FROM product_images im WHERE im.product_id = ? AND ${PUBLIC_IMAGE_CONDITION}
+        ORDER BY im.sort_order, im.id`).bind(row.id).all(),
     ]);
     if (!variantResult.success || !imageResult.success) throw new Error('product-read-failed');
     const variants = variantResult.results.map(({ attributesJson, ...variant }) => ({

@@ -51,11 +51,12 @@ function seed(sqlite) {
   `);
 }
 
-test('未配置的健康状态明确关闭交易和管理，API 不缓存', async () => {
+test('未配置的健康状态明确关闭交易和管理，API 不缓存且禁止索引', async () => {
   const response = await worker.fetch(request('/api/health'), {});
   const body = await response.json();
   assert.equal(response.status, 200);
   assert.equal(response.headers.get('cache-control'), 'no-store');
+  assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow');
   assert.deepEqual(body.data.catalog, { configured: false });
   assert.deepEqual(body.data.storage, { configured: false });
   assert.deepEqual(body.data.checkout, { enabled: false });
@@ -164,6 +165,39 @@ test('商品详情返回真实规格和图片引用，草稿与隐藏商品不�
   for (const slug of ['draft-cup', 'hidden-cup', 'no-variant', 'missing']) {
     assert.equal((await worker.fetch(request(`/api/products/${slug}`), { DB })).status, 404);
   }
+});
+
+test('公开封面与图片列表排除未开放规格图片，保留商品级和活跃规格图片', async (t) => {
+  const { sqlite, DB } = database();
+  t.after(() => sqlite.close());
+  seed(sqlite);
+  sqlite.exec(`
+    UPDATE product_images SET sort_order = 30 WHERE id = 'im1';
+    INSERT INTO product_variants (id, product_id, sku, price_minor, status)
+      VALUES ('v-archived', 'p1', 'CUP-ARCHIVED', 2500, 'archived');
+    INSERT INTO product_images (id, product_id, variant_id, object_key, alt_text, sort_order)
+      VALUES ('im-draft', 'p1', 'v2', 'draft/unreleased.webp', '未开放规格图片', 0),
+             ('im-archived', 'p1', 'v-archived', 'archived/old.webp', '已下架规格图片', 1),
+             ('im-shared', 'p1', NULL, 'products/cup-overview.webp', '商品整体图片', 20);
+  `);
+
+  const inspect = async (expectedImages, expectedAlt) => {
+    const catalog = await (await worker.fetch(request('/api/catalog'), { DB })).json();
+    const listing = catalog.data.products.find(item => item.id === 'p1');
+    const detail = await (await worker.fetch(request('/api/products/white-cup'), { DB })).json();
+    assert.equal(listing.imageKey, expectedImages[0] ?? null);
+    assert.equal(listing.imageAlt, expectedAlt);
+    assert.equal(detail.data.product.imageKey, expectedImages[0] ?? null);
+    assert.equal(detail.data.product.imageAlt, expectedAlt);
+    assert.deepEqual(detail.data.product.images.map(item => item.objectKey), expectedImages);
+    assert.deepEqual(detail.data.product.variants.map(item => item.id), ['v1']);
+  };
+
+  await inspect(['products/cup-overview.webp', 'products/white-cup.webp'], '商品整体图片');
+  sqlite.exec("DELETE FROM product_images WHERE id = 'im-shared'");
+  await inspect(['products/white-cup.webp'], '白色陶杯正面');
+  sqlite.exec("DELETE FROM product_images WHERE id = 'im1'");
+  await inspect([], null);
 });
 
 test('数据库失败统一为 503，SQL 和异常内容不会泄露', async () => {

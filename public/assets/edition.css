@@ -87,6 +87,7 @@ button:disabled:hover { background: inherit; }
 .chapter-product small span { font-size: 10px; }
 .chapter-product:hover > span { text-decoration: underline; text-underline-offset: 4px; }
 .chapter-action { display: flex; justify-content: center; align-items: center; gap: 24px; padding: 12px 25px; border-left: 1px solid var(--ink); font-size: 13px; white-space: nowrap; }
+.chapter-action > span > span { display: inline-block; white-space: nowrap; }
 .chapter-action:hover { background: var(--ink); color: #fff; }
 .collection-bottom { display: flex; justify-content: space-between; gap: 22px; align-items: center; min-height: 70px; }
 .collection-bottom > p { color: var(--muted); font-size: 11px; }
@@ -195,7 +196,8 @@ button:disabled:hover { background: inherit; }
 .sidebar-story > span { color: var(--muted); }
 .search-results { max-height: none; overflow: visible; gap: 0; }
 .search-result strong { font-size: 15px; }
-.search-result small { font-size: 12px; }
+.search-result small { display: flex; flex-wrap: wrap; gap: 2px 8px; font-size: 12px; }
+.search-result small > span { white-space: nowrap; }
 .toast { display: flex; align-items: center; gap: 18px; padding: 10px 12px 10px 20px; border-radius: 0; background: var(--ink); text-align: left; line-height: 1.6; max-width: min(680px, calc(100% - 32px)); bottom: max(24px, env(safe-area-inset-bottom)); }
 .toast.visible { pointer-events: auto; }
 #toast-message { min-width: 0; }
@@ -229,9 +231,13 @@ button:disabled:hover { background: inherit; }
 .admin-heading .button { flex-shrink: 0; white-space: nowrap; }
 .table-product { min-width: 165px; }
 .table-product img { flex-shrink: 0; }
+.readiness-list > div, .admin-table thead,
+.table-product small, .admin-side-bottom > a { color: var(--muted); }
+.admin-empty h2 { color: var(--ink); }
 .admin-table-hint { display: none; }
 @media (max-width: 700px) {
   .admin-table-hint { display: block; margin: -8px 0 10px; font-size: 11px; color: var(--muted); }
+  .metric-card > small, .readiness-list small { font-size: 11px; }
 }
 
 @media (min-width: 1600px) {
@@ -377,6 +383,8 @@ button:disabled:hover { background: inherit; }
   .collection-all { gap: 5px; font-size: 11px; }
   .chapter-label { font-size: 10px; }
   .chapter-story h2 { font-size: 20px; }
+  .chapter-still .chapter-story { top: 10px; left: 10px; padding: 5px 8px 7px; }
+  .chapter-still .chapter-story h2 { font-size: 18px; line-height: 1.4; }
   .chapter-product { padding-inline: 12px; }
   .chapter-action { padding-inline: 11px; gap: 6px; }
   .chapter-product > span { font-size: 13px; }

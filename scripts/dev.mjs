@@ -43,7 +43,8 @@ async function serve(request) {
 const server = http.createServer(async (req,res)=>{
   try {
     const request = new Request(`http://${req.headers.host || 'localhost'}${req.url}`,{method:req.method,headers:req.headers});
-    const response = new URL(request.url).pathname.startsWith('/api/') ? await worker.fetch(request,{ASSETS:{fetch:serve}}) : await serve(request);
+    const pathname = new URL(request.url).pathname;
+    const response = pathname === '/api' || pathname.startsWith('/api/') ? await worker.fetch(request,{ASSETS:{fetch:serve}}) : await serve(request);
     res.writeHead(response.status,Object.fromEntries(response.headers));
     res.end(Buffer.from(await response.arrayBuffer()));
   } catch {

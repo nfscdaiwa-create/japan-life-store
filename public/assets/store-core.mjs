@@ -1,5 +1,41 @@
-/** 纯函数只操作示例目录；正式支付必须由服务端重新计价和校验。 */
+/** 只操作示例目录与本机选择；正式支付必须由服务端重新计价和校验。 */
 export const MAX_DEMO_QUANTITY = 10;
+
+/**
+ * 每个存储键独立保留未保存的操作。读取失败沿用最后确认的资料；读取恢复后，
+ * 将本页操作重新合入最新资料，而不是写回旧快照。localStorage 仍不提供跨页事务。
+ * update 的函数须只描述本次操作，不能修改传入数组或依赖之后会变化的外部状态。
+ */
+export function createSelectionStore({ read, write, normalize }) {
+  let baseline = normalize(null);
+  let value = baseline;
+  let pending = [];
+  let readable = false;
+  function refresh() {
+    try { baseline = normalize(read()); readable = true; }
+    catch { readable = false; }
+    value = pending.reduce((current, operation) => normalize(operation(current)), baseline);
+    return value;
+  }
+  function update(operation) {
+    const before = refresh();
+    const next = normalize(operation(before));
+    if (JSON.stringify(next) !== JSON.stringify(before)) pending.push(operation);
+    value = next;
+    // 无法读到最新资料时不以旧快照覆盖可能存在的其他页面选择。
+    if (readable && pending.length) {
+      try { write(value); baseline = value; pending = []; }
+      catch { /* 未保存的操作继续留在当前页，下一次写入前重新合并。 */ }
+    }
+    return { before, value, saved:readable && pending.length === 0 };
+  }
+  refresh();
+  return {
+    refresh, update,
+    get value() { return value; },
+    get saved() { return readable && pending.length === 0; },
+  };
+}
 
 /** 输入控件允许字符串；存储资料仍由 normalizeCart 严格检查数值类型。 */
 export function clampDemoQuantity(value, fallback = 1) {

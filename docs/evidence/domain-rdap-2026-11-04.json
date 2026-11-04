@@ -1,0 +1,61 @@
+{
+  "recorded_at_utc": "2026-11-04T09:10:04+00:00",
+  "method": "HTTPS GET，直接读取 Verisign .com 注册局 RDAP 响应",
+  "checks": [
+    {
+      "domain": "wuyuri.com",
+      "source_url": "https://rdap.verisign.com/com/v1/domain/wuyuri.com",
+      "request_started_at_utc": "2026-11-04T09:06:56Z",
+      "response_date": "Wed, 04 Nov 2026 09:07:02 GMT",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "registration_object_returned": false,
+      "json_body_parseable": false
+    },
+    {
+      "domain": "wuwusuo.com",
+      "source_url": "https://rdap.verisign.com/com/v1/domain/wuwusuo.com",
+      "request_started_at_utc": "2026-11-04T09:06:56Z",
+      "response_date": "Wed, 04 Nov 2026 09:07:02 GMT",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "registration_object_returned": false,
+      "json_body_parseable": false
+    },
+    {
+      "domain": "surisuo.com",
+      "source_url": "https://rdap.verisign.com/com/v1/domain/surisuo.com",
+      "request_started_at_utc": "2026-11-04T09:06:56Z",
+      "response_date": "Wed, 04 Nov 2026 09:07:02 GMT",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "registration_object_returned": false,
+      "json_body_parseable": false
+    }
+  ],
+  "repeat_check": {
+    "domain": "wuyuri.com",
+    "source_url": "https://rdap.verisign.com/com/v1/domain/wuyuri.com",
+    "request_started_at_utc": "2026-11-04T09:07:58Z",
+    "response_date": "Wed, 04 Nov 2026 09:08:04 GMT",
+    "http_status": 404,
+    "content_type": "application/rdap+json",
+    "body_length_bytes": 0
+  },
+  "registered_domain_control": {
+    "domain": "example.com",
+    "source_url": "https://rdap.verisign.com/com/v1/domain/example.com",
+    "request_started_at_utc": "2026-11-04T09:07:58Z",
+    "response_date": "Wed, 04 Nov 2026 09:08:04 GMT",
+    "http_status": 200,
+    "content_type": "application/rdap+json",
+    "object_class_name": "domain",
+    "json_body_parseable": true
+  },
+  "interpretation": "依 RFC 7480 第 5.3 节，RDAP HTTP 404 表示没有符合查询的记录，错误正文可以省略。本次三个候选均在查询时未返回注册记录；这不等同注册商保证可注册、可购买或价格承诺。",
+  "official_references": [
+    "https://www.verisign.com/news-insights/registration-data-access-protocol/help/",
+    "https://www.rfc-editor.org/rfc/rfc7480.html#section-5.3"
+  ],
+  "scope": "仅状态与 HTTP 元数据；未保留注册者字段。未登录、注册、购买或控制浏览器。"
+}

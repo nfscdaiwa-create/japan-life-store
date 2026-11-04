@@ -16,7 +16,7 @@
 | D1 | 已编写表结构及商品读取逻辑 | 尚未创建远程数据库、执行远程迁移或录入商品 |
 | R2 | 预留 `MEDIA` 绑定与商品图片对象键 | 尚未创建存储桶、实现上传或开放图片读取接口 |
 
-`wrangler.jsonc` 的 `assets.run_worker_first` 仅匹配 `/api/*`。普通静态页面与资源优先由 Cloudflare Static Assets 提供，API 请求由 Worker 处理；未知 API 返回 JSON 404，不伪装成成功加载的首页。
+`wrangler.jsonc` 的 `assets.run_worker_first` 匹配 `/api` 与 `/api/*`。普通静态页面与资源优先由 Cloudflare Static Assets 提供，API 请求由 Worker 处理；未知 API 返回 JSON 404，不伪装成成功加载的首页。
 
 该安排减少普通浏览对动态计算的依赖。参照 [Cloudflare 静态资源路由与绑定](https://developers.cloudflare.com/workers/static-assets/binding/)；实际资源配置见 [Cloudflare 说明](cloudflare.md)。
 

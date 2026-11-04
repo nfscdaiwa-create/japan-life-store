@@ -70,7 +70,7 @@ function home() {
         <button class="chapter-switch" id="chapter-toggle-${c.id}" data-chapter-toggle aria-expanded="${i===0}" aria-controls="chapter-panel-${c.id}" aria-label="展开${c.label}"><span class="chapter-number">${String(i+1).padStart(2,'0')}</span><span class="chapter-glyph" aria-hidden="true">${c.glyph}</span><span class="chapter-label">${c.label}</span><span class="chapter-sign" aria-hidden="true"><span class="chapter-open">${icon('plus')}<small>展开</small></span><span class="chapter-current">当前</span></span></button>
         <div class="chapter-body" id="chapter-panel-${c.id}" role="region" aria-labelledby="chapter-toggle-${c.id}" ${i===0?'':'hidden'}>
           <div class="chapter-photograph ${i>1?'chapter-still':''}"><img src="/assets/${c.image}" alt="${c.alt}" width="1536" height="1024" ${i===0?'fetchpriority="high"':'loading="lazy"'}><div class="chapter-story"><span lang="ja">${c.jp}</span><h2>${c.title.split('\n').join('<br>')}</h2></div><span class="chapter-photo-note">生活场景示意</span></div>
-          <div class="chapter-detail"><a class="chapter-product" href="/products/${p.slug}/"><span>${p.name}</span><small>演示价 ${money(p.priceMinor)} <span>JPY</span></small></a><a class="chapter-action" href="/catalog/?category=${c.id}"><span>浏览${c.label}</span>${icon('arrow')}</a></div>
+          <div class="chapter-detail"><a class="chapter-product" href="/products/${p.slug}/"><span>${p.name}</span><small>演示价 ${money(p.priceMinor)} <span>JPY</span></small></a><a class="chapter-action" href="/catalog/?category=${c.id}"><span><span>浏览</span><span>${c.label}</span></span>${icon('arrow')}</a></div>
         </div>
       </article>`;
     }).join('')}</div>
@@ -138,7 +138,7 @@ function adminBody() {
 }
 
 function notFound() {
-  return `<div class="container empty-state not-found"><span class="eyebrow">404</span><h1><span>这件好物，</span><wbr><span>还没到这里</span></h1><p>页面可能不存在，回到商品列表继续逛逛吧</p><a class="button button-dark" href="/catalog/">浏览全部商品 ${icon('arrow')}</a></div>`;
+  return `<div class="container empty-state not-found"><span class="eyebrow">404</span><h1><span>这件好物，</span><wbr><span>还没到这里</span></h1><p>页面可能不存在，回到商品列表继续逛逛吧</p><a class="button button-dark" href="/catalog/">浏览全部选物 ${icon('arrow')}</a></div>`;
 }
 
 export function renderPage(kind, item) {
