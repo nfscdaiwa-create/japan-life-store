@@ -1,0 +1,266 @@
+{
+  "round": "round2",
+  "purpose": "限定十八个英文品牌字符串的公开 .com RDAP 初筛（首批12项、补充5项及明确追加1项）；全部为语言候选，未定名，不表示购买授权。",
+  "method": "HTTPS GET，Verisign .com 注册局公开 RDAP",
+  "checked_from_utc": "2026-11-05T01:41:28Z",
+  "checked_through_utc": "2026-11-05T01:51:18Z",
+  "checked_from_asia_shanghai": "2026-11-05T09:41:28+08:00",
+  "checked_through_asia_shanghai": "2026-11-05T09:51:18+08:00",
+  "results": [
+    {
+      "domain": "dayanddetail.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/dayanddetail.com",
+      "request_started_at_utc": "2026-11-05T01:41:28Z",
+      "http_status": 200,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:41:34 GMT",
+      "completed_at_utc": "2026-11-05T01:41:34Z",
+      "registration_object_matches_query": true,
+      "result": "registration_record_found"
+    },
+    {
+      "domain": "daysanddetails.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/daysanddetails.com",
+      "request_started_at_utc": "2026-11-05T01:41:28Z",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:41:34 GMT",
+      "completed_at_utc": "2026-11-05T01:41:35Z",
+      "result": "no_matching_registration_record"
+    },
+    {
+      "domain": "dayandform.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/dayandform.com",
+      "request_started_at_utc": "2026-11-05T01:41:28Z",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:41:34 GMT",
+      "completed_at_utc": "2026-11-05T01:41:35Z",
+      "result": "no_matching_registration_record"
+    },
+    {
+      "domain": "plainlygood.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/plainlygood.com",
+      "request_started_at_utc": "2026-11-05T01:41:34Z",
+      "http_status": 200,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:41:39 GMT",
+      "completed_at_utc": "2026-11-05T01:41:39Z",
+      "registration_object_matches_query": true,
+      "result": "registration_record_found"
+    },
+    {
+      "domain": "kindanduseful.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/kindanduseful.com",
+      "request_started_at_utc": "2026-11-05T01:41:35Z",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:41:39 GMT",
+      "completed_at_utc": "2026-11-05T01:41:40Z",
+      "result": "no_matching_registration_record"
+    },
+    {
+      "domain": "simplyuseful.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/simplyuseful.com",
+      "request_started_at_utc": "2026-11-05T01:42:40Z",
+      "http_status": 200,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:42:47 GMT",
+      "completed_at_utc": "2026-11-05T01:42:47Z",
+      "registration_object_matches_query": true,
+      "result": "registration_record_found",
+      "attempts": [
+        {
+          "domain": "simplyuseful.com",
+          "endpoint": "https://rdap.verisign.com/com/v1/domain/simplyuseful.com",
+          "request_started_at_utc": "2026-11-05T01:41:35Z",
+          "http_status": 503,
+          "content_type": "text/plain",
+          "response_date": "Thu, 05 Nov 2026 01:41:40 GMT",
+          "completed_at_utc": "2026-11-05T01:41:40Z",
+          "result": "undetermined"
+        },
+        {
+          "domain": "simplyuseful.com",
+          "endpoint": "https://rdap.verisign.com/com/v1/domain/simplyuseful.com",
+          "request_started_at_utc": "2026-11-05T01:42:40Z",
+          "http_status": 200,
+          "content_type": "application/rdap+json",
+          "response_date": "Thu, 05 Nov 2026 01:42:47 GMT",
+          "completed_at_utc": "2026-11-05T01:42:47Z",
+          "registration_object_matches_query": true,
+          "result": "registration_record_found"
+        }
+      ],
+      "retry_reason": "首次 HTTP 503，仅对同一候选重试一次；不增加候选。"
+    },
+    {
+      "domain": "madefordays.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/madefordays.com",
+      "request_started_at_utc": "2026-11-05T01:41:39Z",
+      "http_status": 200,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:41:43 GMT",
+      "completed_at_utc": "2026-11-05T01:41:44Z",
+      "registration_object_matches_query": true,
+      "result": "registration_record_found"
+    },
+    {
+      "domain": "considereddaily.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/considereddaily.com",
+      "request_started_at_utc": "2026-11-05T01:41:40Z",
+      "http_status": 200,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:41:44 GMT",
+      "completed_at_utc": "2026-11-05T01:41:44Z",
+      "registration_object_matches_query": true,
+      "result": "registration_record_found"
+    },
+    {
+      "domain": "consideredgoods.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/consideredgoods.com",
+      "request_started_at_utc": "2026-11-05T01:41:40Z",
+      "http_status": 200,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:41:43 GMT",
+      "completed_at_utc": "2026-11-05T01:41:44Z",
+      "registration_object_matches_query": true,
+      "result": "registration_record_found"
+    },
+    {
+      "domain": "lastinggoods.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/lastinggoods.com",
+      "request_started_at_utc": "2026-11-05T01:41:44Z",
+      "http_status": 200,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:41:48 GMT",
+      "completed_at_utc": "2026-11-05T01:41:48Z",
+      "registration_object_matches_query": true,
+      "result": "registration_record_found"
+    },
+    {
+      "domain": "goodtokeep.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/goodtokeep.com",
+      "request_started_at_utc": "2026-11-05T01:41:44Z",
+      "http_status": 200,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:41:48 GMT",
+      "completed_at_utc": "2026-11-05T01:41:48Z",
+      "registration_object_matches_query": true,
+      "result": "registration_record_found"
+    },
+    {
+      "domain": "adaywellmade.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/adaywellmade.com",
+      "request_started_at_utc": "2026-11-05T01:41:44Z",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:41:48 GMT",
+      "completed_at_utc": "2026-11-05T01:41:49Z",
+      "result": "no_matching_registration_record"
+    },
+    {
+      "domain": "handandhabit.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/handandhabit.com",
+      "request_started_at_utc": "2026-11-05T01:47:07Z",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:47:13 GMT",
+      "completed_at_utc": "2026-11-05T01:47:15Z",
+      "result": "no_matching_registration_record"
+    },
+    {
+      "domain": "worththespace.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/worththespace.com",
+      "request_started_at_utc": "2026-11-05T01:47:07Z",
+      "http_status": 200,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:47:13 GMT",
+      "completed_at_utc": "2026-11-05T01:47:14Z",
+      "registration_object_matches_query": true,
+      "result": "registration_record_found"
+    },
+    {
+      "domain": "lovelytouse.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/lovelytouse.com",
+      "request_started_at_utc": "2026-11-05T01:47:07Z",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:47:13 GMT",
+      "completed_at_utc": "2026-11-05T01:47:15Z",
+      "result": "no_matching_registration_record"
+    },
+    {
+      "domain": "niceandneeded.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/niceandneeded.com",
+      "request_started_at_utc": "2026-11-05T01:47:14Z",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:47:18 GMT",
+      "completed_at_utc": "2026-11-05T01:47:19Z",
+      "result": "no_matching_registration_record"
+    },
+    {
+      "domain": "alittleease.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/alittleease.com",
+      "request_started_at_utc": "2026-11-05T01:47:15Z",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:47:18 GMT",
+      "completed_at_utc": "2026-11-05T01:47:19Z",
+      "result": "no_matching_registration_record"
+    },
+    {
+      "domain": "objectsandhabits.com",
+      "endpoint": "https://rdap.verisign.com/com/v1/domain/objectsandhabits.com",
+      "request_started_at_utc": "2026-11-05T01:51:12Z",
+      "http_status": 404,
+      "content_type": "application/rdap+json",
+      "response_date": "Thu, 05 Nov 2026 01:51:17 GMT",
+      "completed_at_utc": "2026-11-05T01:51:18Z",
+      "result": "no_matching_registration_record"
+    }
+  ],
+  "interpretation": {
+    "registration_record_found": "HTTP 200 且注册局返回与查询名称匹配的 domain 对象。",
+    "no_matching_registration_record": "HTTP 404，未查到匹配登记记录；不等于注册商承诺可付款注册。",
+    "undetermined": "该次响应不足以确认登记状态。"
+  },
+  "official_references": [
+    "https://www.verisign.com/news-insights/registration-data-access-protocol/help/",
+    "https://www.rfc-editor.org/rfc/rfc7480.html#section-5.3"
+  ],
+  "privacy": "仅保留查询和HTTP元数据以及是否存在匹配登记；不保存或输出注册者、联系人、联系方式、实体或其他个人注册资料。",
+  "scope": "未访问Cloudflare验证、登录、注册、购买、创建店铺或修改项目；本文件为新证据，不覆盖前轮。",
+  "batches": [
+    {
+      "candidate_count": 12,
+      "checked_from_utc": "2026-11-05T01:41:28Z",
+      "checked_through_utc": "2026-11-05T01:42:47Z",
+      "note": "首批含 simplyuseful.com 的一次503重试。"
+    },
+    {
+      "candidate_count": 5,
+      "checked_from_utc": "2026-11-05T01:47:07Z",
+      "checked_through_utc": "2026-11-05T01:47:19Z",
+      "note": "本轮唯一补充批次，不再增加候选。"
+    },
+    {
+      "candidate_count": 1,
+      "checked_from_utc": "2026-11-05T01:51:12Z",
+      "checked_through_utc": "2026-11-05T01:51:18Z",
+      "note": "经明确追加授权，仅补 objectsandhabits.com；总数18，不再扩名。"
+    }
+  ],
+  "semantic_scope": "只核查登记记录，不作名称或商标结论；alittleease.com 的额外词义风险仍需独立核查。",
+  "frozen": true,
+  "frozen_at_utc": "2026-11-05T01:51:18Z",
+  "candidate_limit": 18,
+  "freeze_history": [
+    {
+      "candidate_count": 17,
+      "frozen_at_utc": "2026-11-05T01:47:19Z",
+      "records_sha256": "227b2d74cea50714ecc51fe275eedaf1f5d09e53578e1fdcc6147d9a018fdbc6"
+    }
+  ]
+}
