@@ -1,0 +1,33 @@
+{
+  "purpose": "仅核查用户指定的 NICENEEDED.com 当前登记记录；不扩展候选。",
+  "method": "HTTPS GET，Verisign .com 注册局公开 RDAP",
+  "checked_from_utc": "2026-11-05T02:03:40Z",
+  "checked_through_utc": "2026-11-05T02:03:48Z",
+  "checked_from_asia_shanghai": "2026-11-05T10:03:40+08:00",
+  "checked_through_asia_shanghai": "2026-11-05T10:03:48+08:00",
+  "result": {
+    "domain": "niceneeded.com",
+    "endpoint": "https://rdap.verisign.com/com/v1/domain/niceneeded.com",
+    "request_started_at_utc": "2026-11-05T02:03:40Z",
+    "http_status": 200,
+    "content_type": "application/rdap+json",
+    "response_date": "Thu, 05 Nov 2026 02:03:47 GMT",
+    "completed_at_utc": "2026-11-05T02:03:48Z",
+    "registration_object_matches_query": true,
+    "result": "registration_record_found",
+    "object_class_name": "domain",
+    "returned_domain_name": "NICENEEDED.COM"
+  },
+  "interpretation": {
+    "registration_record_found": "HTTP 200 且返回 domain 对象的域名与 niceneeded.com 一致。",
+    "no_matching_registration_record": "HTTP 404，未查到匹配登记记录；不等于注册商保证可付款注册。",
+    "undetermined": "本次响应不足以确认登记状态。"
+  },
+  "official_references": [
+    "https://www.verisign.com/news-insights/registration-data-access-protocol/help/",
+    "https://www.rfc-editor.org/rfc/rfc7480.html#section-5.3"
+  ],
+  "limits": "登记状态不能替代已有品牌、近名或商标判断；本次不作品牌可用性结论。",
+  "privacy": "只保留查询/HTTP元数据及匹配的域名；未保存或输出注册者、联系人、联系方式或其他个人注册数据。",
+  "scope": "未登录、注册、购买、访问Cloudflare验证、增加候选或修改项目。"
+}
