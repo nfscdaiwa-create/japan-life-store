@@ -60,6 +60,18 @@ test('组合筛选同时尊重关键词、分类、价格、收藏和排序',()=
   assert.equal(filterProducts(products,categories,{category:'kitchen',min:3000}).length,0);
 });
 
+test('搜索支持多个关键词、展示颜色与全角空格，每个关键词都必须匹配',()=>{
+  const ids = options=>filterProducts(products,categories,options).map(product=>product.id);
+  assert.deepEqual(ids({q:'浅灰'}),['demo-towel']);
+  assert.deepEqual(ids({q:'米白 毛巾'}),['demo-towel']);
+  assert.deepEqual(ids({q:'餐桌 陶瓷'}),['demo-cup']);
+  assert.deepEqual(ids({q:'  陶瓷　杯  '}),['demo-cup']);
+  assert.deepEqual(ids({q:'毛巾 深蓝'}),[]);
+  assert.deepEqual(ids({q:'浅灰',category:'kitchen'}),[]);
+  assert.deepEqual(ids({q:'米白',min:2000,sort:'price-asc'}),['demo-bottle','demo-cup']);
+  assert.deepEqual(ids({q:'\t　\n'}),products.map(product=>product.id));
+});
+
 test('撤销只恢复被删颜色，保留当前其他颜色与其他标签页新增的商品',()=>{
   const towel = { ...products.find(p=>p.id==='demo-towel'), colors:['米白','浅灰'] };
   const catalog = products.map(p=>p.id===towel.id ? towel : p);

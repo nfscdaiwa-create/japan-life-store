@@ -85,13 +85,17 @@ export function cartTotal(items,products) {
 }
 export function filterProducts(products,categories,options={}) {
   const normalized = String(options.q || '').normalize('NFKC').trim().toLocaleLowerCase('zh-CN');
+  // 多个词可分别命中名称、分类或展示颜色；空格（含全角空格）不必出现在商品原文中。
+  const terms = normalized.split(/\s+/u).filter(Boolean);
+  const categoryNames = new Map(categories.map(category=>[category.id,category.name]));
   let found = products.filter(p=>{
     if (categories.some(c=>c.id===options.category) && p.category !== options.category) return false;
     if (['table','home','tea','outdoor'].includes(options.scene) && p.scene !== options.scene) return false;
     if (Array.isArray(options.ids) && !options.ids.includes(p.id)) return false;
-    const category = categories.find(c=>c.id===p.category)?.name || '';
-    const haystack = `${p.name} ${p.subtitle} ${p.description} ${p.tag} ${category}`.normalize('NFKC').toLocaleLowerCase('zh-CN');
-    if (normalized && !haystack.includes(normalized)) return false;
+    const category = categoryNames.get(p.category) || '';
+    const colors = Array.isArray(p.colors) ? p.colors.filter(color=>typeof color === 'string').join(' ') : '';
+    const haystack = `${p.name} ${p.subtitle} ${p.description} ${p.tag} ${category} ${colors}`.normalize('NFKC').toLocaleLowerCase('zh-CN');
+    if (!terms.every(term=>haystack.includes(term))) return false;
     const min = options.min === '' || options.min == null ? null : Number(options.min);
     const max = options.max === '' || options.max == null ? null : Number(options.max);
     if (Number.isFinite(min) && min >= 0 && p.priceMinor < min) return false;
